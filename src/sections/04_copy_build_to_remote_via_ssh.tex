@@ -24,13 +24,14 @@ Terminal output:
     \includegraphics[width=1\textwidth]{img/04_create_remote_folder}
     ~\caption{Create folder at remote VM.}\label{fig:figure10}
 \end{figure}
-As next step consider to copy build files to the remote folder on your Azure VM\@.
-We copy on behalf of WSL 2.0 this time.
+As next step consider to copy build files to the remote folder on your Azure VM so that we execute our program after.
+We copy the build files on behalf of WSL2 this time.
 In order to copy the build files we use following commands
 \begin{itemize}
     \item \texttt{cd /mnt/e/mango-linux-build}
     \item \texttt{scp -r -i ~/.ssh/id\_rsa ./src/* \\ razumovsky\_r@VM\_IP\_ADDRESS:/home/razumovsky\_r/mango-backend}
 \end{itemize}
+where \texttt{id\_rsa} is the private key.
 Terminal output:
 \begin{figure}[H]
     \centering
