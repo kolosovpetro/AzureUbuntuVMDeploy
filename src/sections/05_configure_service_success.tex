@@ -13,7 +13,7 @@ Use the command to create service
 \end{center}
 Paste the following text there
 \begin{spverbatim}
-[Unit]
+    [Unit]
     Description=Mango Messenger Backend Service for Azure Dev Environment
     After=network.target
 
@@ -42,7 +42,7 @@ Paste the following text there
     [Install]
     WantedBy=multi-user.target
 \end{spverbatim}
-From the vim it should look as follows
+From the vim it should look as follows~\cite{Ubuntu_service}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{img/05_ubuntu_service_vim}
@@ -60,4 +60,5 @@ Terminal output:
     \includegraphics[width=1\textwidth]{img/05_ubuntu_service_status}
     ~\caption{Run ubuntu service and check status, terminal output.}\label{fig:figure14}
 \end{figure}
-This completes the section.
+As a result of this section, we have created a specified ubuntu service that runs our previously copied .NET Core
+web application using installed .NET SDK and runtime.

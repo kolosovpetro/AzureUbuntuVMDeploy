@@ -11,7 +11,7 @@ Terminal output:
     \includegraphics[width=1\textwidth]{img/06_install_nginx}
     ~\caption{Ubuntu install nginx terminal output.}\label{fig:figure15}
 \end{figure}
-Next, it is necessary to create nginx configuration that exposes our application, that is
+Next, it is necessary to create nginx configuration~\cite{NginxConfig} that exposes our application, that is
 \begin{spverbatim}
     server {
         server_name STATIC_IP_ADDRESS_OF_VM;
@@ -66,3 +66,6 @@ And actually it works as expected
     \includegraphics[width=1\textwidth]{img/06_view_in_browser}
     ~\caption{.NET Core web app accessed via browser using static IP address of the virtual machine.}\label{fig:figure17}
 \end{figure}
+In this section we have installed and configured the \texttt{nginx} web server so that it exposes our .NET Core web
+application (run on behalf of Ubuntu service) from the previous section and makes it available
+from the web browser under the url \texttt{http://STATIC\_IP\_ADDRESS\_OF\_THE\_VM}.
