@@ -12,35 +12,7 @@ Terminal output:
     ~\caption{Ubuntu install nginx terminal output.}\label{fig:figure15}
 \end{figure}
 Next, it is necessary to create nginx configuration~\cite{NginxConfig} that exposes our application, that is
-\begin{spverbatim}
-    server {
-        server_name STATIC_IP_ADDRESS_OF_VM;
-
-        location / {
-            include proxy_params;
-            proxy_pass http://127.0.0.1:8080;
-        }
-
-        location /swagger {
-            include proxy_params;
-            proxy_pass http://127.0.0.1:8080;
-        }
-
-        location /api {
-            include proxy_params;
-            proxy_pass http://127.0.0.1:8080;
-        }
-
-        location /notify {
-            proxy_pass http://127.0.0.1:8080;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            proxy_set_header Host $host;
-            proxy_cache_bypass $http_upgrade;
-        }
-    }
-\end{spverbatim}
+\input{auxiliary/nginx-ip-configuration.tex}
 We create it at the following path on behalf of our Azure VM via SSH
 \begin{center}
     \texttt{sudo vim /etc/nginx/conf.d/back.mangomesenger.company.conf}
