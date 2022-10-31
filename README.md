@@ -1,8 +1,7 @@
 # Azure VM Deploy Guide
 
-[![Build PDF](https://github.com/kolosovpetro/AzureVMDeploy/actions/workflows/build-pdf.yml/badge.svg)](https://github.com/kolosovpetro/AzureVMDeploy/actions/workflows/build.yml/badge.svg)
-[![Build and Deploy PDF](https://github.com/kolosovpetro/AzureVMDeploy/actions/workflows/build-and-deploy-pdf.yml/badge.svg)](https://github.com/kolosovpetro/AzureVMDeploy/actions/workflows/build-and-deploy.yml/badge.svg)
-![contributors count](https://img.shields.io/github/contributors/kolosovpetro/AzureVMDeploy)
+[![Build PDF](https://github.com/kolosovpetro/AzureUbuntuVMDeploy/actions/workflows/build-pdf.yml/badge.svg)](https://github.com/kolosovpetro/AzureUbuntuVMDeploy/actions/workflows/build-pdf.yml)
+[![Build and Deploy PDF](https://github.com/kolosovpetro/AzureUbuntuVMDeploy/actions/workflows/build-and-deploy-pdf.yml/badge.svg)](https://github.com/kolosovpetro/AzureUbuntuVMDeploy/actions/workflows/build-and-deploy-pdf.yml)
 
 ## Build and run in Intellij IDEA
 
