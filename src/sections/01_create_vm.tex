@@ -1,0 +1,19 @@
+Firstly, it is necessary to create a virtual machine (unexpectedly) where deployment to be hosted on.
+In this guide is considered free virtual machine of type \texttt{Standard B1ms (1 vcpu, 2 GiB memory)}
+with Ubuntu 20.04 operating system.
+Definitely it won't be considered step by step creation in this document, however required VM parameter are as follows:
+\begin{itemize}
+    \item Size: \texttt{Standard B1ms (1 vcpu, 2 GiB memory)}
+    \item OS: \texttt{Ubuntu Server 20.04 LTS - Gen2}
+    \item Availability options: \texttt{No infrastructure required}
+    \item Authentication type: \texttt{SSH public key}
+    \item SSH public key source: \texttt{Use existing public key (create it before you created VM)}
+    \item Public inbound ports: \texttt{HTTP(80), HTTPS(443), SSH(22)}
+    \item OS disk type: \texttt{Standard SSD}
+    \item Encryption type: \texttt{Default}
+    \item Public IP: \texttt{Basic SKU, Static (be sure to create static IP)}
+    \item Select inbound ports: \texttt{HTTP(80), HTTPS(443), SSH(22)}
+    \item Boot diagnostics: \texttt{Disabled}
+\end{itemize}
+Chosen parameters of the virtual machine are collected in order to minimize vm's cost.
+If you are not sure, refer to the screenshots via the reference~\cite{Create_Vm_Screens}.

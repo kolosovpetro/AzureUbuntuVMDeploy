@@ -1,0 +1,35 @@
+In this section the main aim is to implement an Ubuntu service such that runs our previously built
+.NET Core web application.
+It means that we have to configure the environment variables used in our application
+as well as to configure the firewall rules so that application will be able to communicate with
+another resources like databases, blobs etc.
+Ubuntu server refers to the entry point of the web app, that is
+\begin{center}
+    \texttt{/home/razumovsky\_r/mango-backend/MangoAPI.Presentation}
+\end{center}
+Use the command to create service
+\begin{center}
+    \texttt{sudo vim /etc/systemd/system/mangoback.service}
+\end{center}
+Paste the following text there
+\input{auxiliary/ubuntu-service.tex}
+From the vim it should look as follows~\cite{Ubuntu_service}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/05_ubuntu_service_vim}
+    ~\caption{Ubuntu service opened in vim.}\label{fig:figure13}
+\end{figure}
+Make sure all resources are listening from the outside, check firewall rules on database side prior to run the service.
+Start and check health of the service using
+\begin{itemize}
+    \item \texttt{sudo systemctl start mangoback}
+    \item \texttt{sudo systemctl status mangoback}
+\end{itemize}
+Terminal output:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/05_ubuntu_service_status}
+    ~\caption{Run ubuntu service and check status, terminal output.}\label{fig:figure14}
+\end{figure}
+As a result of this section, we have created a specified ubuntu service that runs our previously copied .NET Core
+web application using installed .NET SDK and runtime.
