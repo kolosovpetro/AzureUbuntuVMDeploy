@@ -3,37 +3,52 @@ name: Build and Deploy PDF
 on:
   push:
     branches:
+      - main
       - master
+  workflow_dispatch:
+
+env:
+  FILE_NAME: "AzureVMDeploy"
 
 jobs:
-  build-resume:
+  build-pdf:
     runs-on: ubuntu-latest
-    name: Create document
+    name: Build and Deploy PDF
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-      - name: Convert to pdf
-        id: convert-to-pdf
+        uses: actions/checkout@v3
+
+      - name: Build PDF
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: AzureVMDeploy.tex
+          root_file: "${{ env.FILE_NAME }}.tex"
           working_directory: src
-      - uses: actions/upload-artifact@v2
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
         with:
-          name: PDF
-          path: AzureVMDeploy.pdf
-      - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GH_ACCESS_TOKEN }}
+          name: "drop"
+          path: "src/${{ env.FILE_NAME }}.pdf"
+
       - name: Clone repository and add document
+        continue-on-error: true
         run: |
-          git clone https://${{ secrets.GH_ACCESS_TOKEN }}@github.com/kolosovpetro/kolosovpetro.github.io.git ~/kolosovpetro.github.io
-          cp out/AzureVMDeploy.pdf  ~/kolosovpetro.github.io/pdf/AzureVMDeploy.pdf
+          git clone https://$TOKEN@github.com/kolosovpetro/kolosovpetro.github.io.git ~/kolosovpetro.github.io
+          cp src/${{ env.FILE_NAME }}.pdf ~/kolosovpetro.github.io/pdf/${{ env.FILE_NAME }}.pdf
+        env:
+          TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+
       - name: Commit document changes if any
+        continue-on-error: true
         run: |
           cd ~/kolosovpetro.github.io
-          git config --global user.name '${{ secrets.GH_NAME }}'
-          git config --global user.email '${{ secrets.GH_EMAIL }}'
+          git config --global user.name "$USERNAME"
+          git config --global user.email "$EMAIL"
           git add .
-          git commit -am "CICD deploy from main repo"
+          git commit -m "$MESSAGE"
           git push
+        env:
+          USERNAME: "kolosovpetro"
+          EMAIL: "kolosovp94@gmail.com"
+          MESSAGE: "CICD deploy of PDF document"
