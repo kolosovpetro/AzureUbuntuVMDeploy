@@ -2,47 +2,47 @@ This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: E:\RiderProjects\04_LATEX\AzureUbuntuVMDeploy\out/AzureVMDeploy.aux
 Reallocating 'name_of_file' (item size: 1) to 6 items.
-The style file: alpha.bst
+The style file: unsrt.bst
 Reallocating 'name_of_file' (item size: 1) to 14 items.
 Database file #1: AzureVMDeploy.bib
 You've used 5 entries,
-            2543 wiz_defined-function locations,
-            582 strings with 5461 characters,
-and the built_in function-call counts, 1363 in all, are:
-= -- 130
-> -- 40
-< -- 5
-+ -- 12
-- -- 10
-* -- 57
-:= -- 223
+            1791 wiz_defined-function locations,
+            469 strings with 4540 characters,
+and the built_in function-call counts, 665 in all, are:
+= -- 55
+> -- 20
+< -- 0
++ -- 10
+- -- 5
+* -- 7
+:= -- 109
 add.period$ -- 15
 call.type$ -- 5
-change.case$ -- 25
-chr.to.int$ -- 3
+change.case$ -- 5
+chr.to.int$ -- 0
 cite$ -- 5
-duplicate$ -- 55
-empty$ -- 126
-format.name$ -- 20
-if$ -- 287
-int.to.chr$ -- 3
-int.to.str$ -- 0
+duplicate$ -- 25
+empty$ -- 91
+format.name$ -- 5
+if$ -- 156
+int.to.chr$ -- 0
+int.to.str$ -- 5
 missing$ -- 0
 newline$ -- 28
-num.names$ -- 15
-pop$ -- 45
+num.names$ -- 5
+pop$ -- 30
 preamble$ -- 1
-purify$ -- 30
+purify$ -- 0
 quote$ -- 0
-skip$ -- 54
+skip$ -- 15
 stack$ -- 0
-substring$ -- 35
+substring$ -- 0
 swap$ -- 5
-text.length$ -- 5
-text.prefix$ -- 5
+text.length$ -- 0
+text.prefix$ -- 0
 top$ -- 0
-type$ -- 40
+type$ -- 0
 warning$ -- 0
-while$ -- 10
-width$ -- 7
-write$ -- 62
+while$ -- 5
+width$ -- 6
+write$ -- 52
