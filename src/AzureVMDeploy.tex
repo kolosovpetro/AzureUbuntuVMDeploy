@@ -18,6 +18,14 @@
 \apptocmd{\sloppy}{\hbadness 10000\relax}{}{}
 \raggedbottom
 
+% free foot note
+\let\svthefootnote\thefootnote
+\newcommand\freefootnote[1]{%
+    \let\thefootnote\relax%
+    \footnotetext{#1}%
+    \let\thefootnote\svthefootnote%
+}
+
 
 \title[.NET Core Web API Azure Ubuntu Virtual Machine deployment manual]
 {.NET Core Web API Azure Ubuntu Virtual Machine deployment manual}
