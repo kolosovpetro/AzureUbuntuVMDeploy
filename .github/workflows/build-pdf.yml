@@ -6,6 +6,7 @@ on:
       - develop
       - master
       - main
+      - release/*
   pull_request:
     branches:
       - main
@@ -13,25 +14,20 @@ on:
   workflow_dispatch:
 
 env:
-  FILE_NAME: "AzureVMDeploy"
+  ACTIONS_RUNNER_DEBUG: false
 
 jobs:
   build-pdf:
-    runs-on: ubuntu-latest
-    name: Build PDF
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Build PDF
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: "${{ env.FILE_NAME }}.tex"
-          working_directory: src
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: "drop"
-          path: "src/${{ env.FILE_NAME }}.pdf"
+    uses: kolosovpetro/github-latex-template/.github/workflows/build-pdf-template.yml@main
+    with:
+      file_name: 'AzureVMDeploy'
+      runs_on: 'ubuntu-latest'
+      workflow_name: 'Build PDF'
+      build_assets_path: |
+        src/AzureVMDeploy.tex
+        src/AzureVMDeploy.bbl
+        src/AzureVMDeploy.bib
+        src/sections
+        src/img
+        src/auxiliary
+      working_directory_for_latex: 'src'

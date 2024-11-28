@@ -2,53 +2,27 @@ name: Build and Deploy PDF
 
 on:
   push:
-    branches:
-      - main
-      - master
+    tags:
+      - v*
   workflow_dispatch:
 
 env:
-  FILE_NAME: "AzureVMDeploy"
+  ACTIONS_RUNNER_DEBUG: false
+  # REQUIRES ${{ secrets.GH_ACCESS_TOKEN }} defined in secrets
 
 jobs:
-  build-pdf:
-    runs-on: ubuntu-latest
-    name: Build and Deploy PDF
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Build PDF
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: "${{ env.FILE_NAME }}.tex"
-          working_directory: src
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: "drop"
-          path: "src/${{ env.FILE_NAME }}.pdf"
-
-      - name: Clone repository and add document
-        continue-on-error: true
-        run: |
-          git clone https://$TOKEN@github.com/kolosovpetro/kolosovpetro.github.io.git ~/kolosovpetro.github.io
-          cp src/${{ env.FILE_NAME }}.pdf ~/kolosovpetro.github.io/pdf/${{ env.FILE_NAME }}.pdf
-        env:
-          TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
-
-      - name: Commit document changes if any
-        continue-on-error: true
-        run: |
-          cd ~/kolosovpetro.github.io
-          git config --global user.name "$USERNAME"
-          git config --global user.email "$EMAIL"
-          git add .
-          git commit -m "$MESSAGE"
-          git push
-        env:
-          USERNAME: "kolosovpetro"
-          EMAIL: "kolosovp94@gmail.com"
-          MESSAGE: "CICD deploy of PDF document"
+  build-deploy-pdf:
+    uses: kolosovpetro/github-latex-template/.github/workflows/build-and-deploy-pdf-template.yml@main
+    secrets: inherit
+    with:
+      file_name: 'AzureVMDeploy'
+      runs_on: 'ubuntu-latest'
+      workflow_name: 'Build and Deploy PDF'
+      build_assets_path: |
+        src/AzureVMDeploy.tex
+        src/AzureVMDeploy.bbl
+        src/AzureVMDeploy.bib
+        src/sections
+        src/img
+        src/auxiliary
+      working_directory_for_latex: 'src'
